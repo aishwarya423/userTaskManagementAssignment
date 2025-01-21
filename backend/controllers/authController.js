@@ -1,7 +1,7 @@
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
 // const { Instructor } = require("../models/instructor");
-const { User } = require("../models/user");
+const  User  = require("../models/user");
 
 const { randomBytes,scrypt  } = require("crypto");
 

@@ -1,5 +1,5 @@
  
-const { Task } = require("../models/Task");
+const  Task  = require("../models/Task");
 
 const  createTask = async (req, res) => {
     try {
@@ -17,6 +17,7 @@ const  createTask = async (req, res) => {
           return res.status(200).json({ message: "Task Created successfully", response: createdTask });
    
     } catch (error) {
+        console.log("error",error)
         res.status(500).json({ message: 'Error Creating Task', error });
     }
 };
@@ -50,9 +51,9 @@ const updateTask = async (req, res) => {
 };
 const assignTask = async (req, res) => {
     try {  
-        let {_id,  user_id } = req.body;
+        let {_id: task_id,  user_id } = req.body;
         const taskdetails = await Task.findOneAndUpdate(
-          { _id: _id },
+          { _id: task_id },
           {$push:{ assignedUser: user_id}},
           { returnOriginal: true }
         );
@@ -78,5 +79,6 @@ module.exports = {
     createTask: createTask,
     getTasks: getTasks,
     updateTask: updateTask,
-    deleteTask: deleteTask
+    deleteTask: deleteTask,
+    assignTask :assignTask
 };
