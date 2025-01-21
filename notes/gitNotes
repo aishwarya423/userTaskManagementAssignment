@@ -1,0 +1,16 @@
+
+$ git init
+$ git config user.name "aishwarya423"
+$ git config user.email "aishwarya.palarapu@gmail.com"
+$ git add *
+$ git commit -m "msg to be committed"
+$ git push origin master/main
+
+
+ git config --global user.email
+
+
+https://github.com/aishwarya423/userTaskManagementAssignment.git
+
+
+git remote add origin https://github.com/aishwarya423/userTaskManagementAssignment.git
