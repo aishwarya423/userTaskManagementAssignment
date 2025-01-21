@@ -1,5 +1,5 @@
  
-const { Project } = require("../models/Project");
+const  Project  = require("../models/Project");
 
 const  createProject = async (req, res) => {
     try {
@@ -7,7 +7,7 @@ const  createProject = async (req, res) => {
             title,
             description,
             owner,
-            createdAt:new Date()
+            createdAt 
           } = req.body);
 
           var createdProject = await Project.create(data);
@@ -25,7 +25,9 @@ const getProjects = async (req, res) => {
           .status(200)
           .json({ message: "Project Fetched successfully", response: projects });
     } catch (error) {
-        res.status(500).json({ message: 'Error logging in getProjects', error });
+        console.log("error",error)
+
+        res.status(500).json({ message: 'Error loading in getProjects', error });
     }
 };
 

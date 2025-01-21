@@ -10,7 +10,7 @@ const  createTask = async (req, res) => {
             deadline,
             assignedUser,
             project,
-            createdAt:new Date()
+            createdAt 
           } = req.body);
 
           var createdTask = await Task.create(data);

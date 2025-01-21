@@ -1,58 +1,58 @@
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
-const { Instructor } = require('../models/instructor')
+// const { Instructor } = require('../models/instructor')
 const { User } = require('../models/user')
 
 
 
-exports.instructorAuth = async (req, res, next) => {
-// let token = req.headers.authorization.split(' ')
-// token = token[1]
-let token =  req.cookies.token.token
-console.log(token,"tokkkkkkkkken")
-  try {
-    if (!token) {
-      return res.status(409).send("access denied. No token Provided");
-    }else {    
-      const decoded = jwt.verify(token, process.env.jwtPrivateKey);
-      var user = await Instructor.findOne({ _id: decoded._id });
-      if(user ==null) return res.status(400).send('Unauthorised access')
-      req.user = user;   
-      res.locals.currentUser = user; 
-    console.log(req.user,"req.user");
-    console.log(res.locals.currentUser,"currtusr");  }
-    next();
-  } catch (e) {
-    console.log(e);
-    res.clearCookie("token");
-  }
-};
+// exports.instructorAuth = async (req, res, next) => {
+// // let token = req.headers.authorization.split(' ')
+// // token = token[1]
+// let token =  req.cookies.token.token
+// console.log(token,"tokkkkkkkkken")
+//   try {
+//     if (!token) {
+//       return res.status(409).send("access denied. No token Provided");
+//     }else {    
+//       const decoded = jwt.verify(token, process.env.jwtPrivateKey);
+//       var user = await Instructor.findOne({ _id: decoded._id });
+//       if(user ==null) return res.status(400).send('Unauthorised access')
+//       req.user = user;   
+//       res.locals.currentUser = user; 
+//     console.log(req.user,"req.user");
+//     console.log(res.locals.currentUser,"currtusr");  }
+//     next();
+//   } catch (e) {
+//     console.log(e);
+//     res.clearCookie("token");
+//   }
+// };
 
 
 
-exports.studentAuth = async (req, res, next) => {
-  console.log("reqqqq",req.headers.authorization) 
-// let token = req.headers.authorization.split(' ')
-// token = token[1]
-let token =  req.cookies.token.token
-  try {
-    if (!token) {
-      return res.status(409).send("access denied. No token Provided");
-    }else {    
-      const decoded = jwt.verify(token, process.env.jwtPrivateKey);
-      var user = await User.findOne({ _id: decoded._id });
-      if(user == null) return res.status(400).send('Unauthorised access')
+// exports.studentAuth = async (req, res, next) => {
+//   console.log("reqqqq",req.headers.authorization) 
+// // let token = req.headers.authorization.split(' ')
+// // token = token[1]
+// let token =  req.cookies.token.token
+//   try {
+//     if (!token) {
+//       return res.status(409).send("access denied. No token Provided");
+//     }else {    
+//       const decoded = jwt.verify(token, process.env.jwtPrivateKey);
+//       var user = await User.findOne({ _id: decoded._id });
+//       if(user == null) return res.status(400).send('Unauthorised access')
 
-      req.user = user;
-      res.locals.currentUser = user; 
-    console.log(req.user,"req.user");
-    console.log(res.locals.currentUser,"currtusr");  }
-    next();
-  } catch (e) {
-    console.log(e);
-    res.clearCookie("token");
-  }
-};
+//       req.user = user;
+//       res.locals.currentUser = user; 
+//     console.log(req.user,"req.user");
+//     console.log(res.locals.currentUser,"currtusr");  }
+//     next();
+//   } catch (e) {
+//     console.log(e);
+//     res.clearCookie("token");
+//   }
+// };
 
 
 exports.checkAuth = async (req, res, next) => {
