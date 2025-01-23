@@ -33,7 +33,7 @@ const { User } = require('../models/user')
 // exports.studentAuth = async (req, res, next) => {
 //   console.log("reqqqq",req.headers.authorization) 
 // // let token = req.headers.authorization.split(' ')
-// // token = token[1]
+// // token = token[1] 
 // let token =  req.cookies.token.token
 //   try {
 //     if (!token) {
